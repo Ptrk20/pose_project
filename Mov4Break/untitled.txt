@@ -1,0 +1,48 @@
+1. Neck Extension; (1NF)
+2. Neck Flexion; (2NF)
+3. Lateral Neck Flexion; (3LNF)
+4. Standing Prayer Stretch; (4SPS)
+5. Wrist Extensor Stretch; (5WES)
+6. Cross Body Shoulder Stretch; (6CBSS)
+7. Side Stretch; (7SS)
+8. Elbow Extension; (8EE)
+9. High Crescent Lunge; (9HCL)
+10. Quadriceps Stretch; (10QS)
+11. Standing Hamstring Stretch; (11SH)
+12. Single Leg Balance (12SLB)
+
+
+EB - Elbows Backward
+LF - Leaning Forward
+LB - Leaning Backward
+LL - Leaning Left
+LR - Leaning Right
+NBU - Neck Bent Upward
+NBF - Neck Bent Forward
+KF - Knee Flexion
+KE - Knee Extension
+SS - S-Spine
+S - Slouch
+PS - Proper Sitting
+
+1. Neck Extension; (1NE)
+2. Neck Flexion; (2NF)
+3.1 Left Lateral Neck Flexion; (3LLNF)
+3.2 Right Lateral Neck Flexion; (3RLNF)
+4. Standing Prayer Stretch; (4SPS)
+5.1 Left Wrist Extensor Stretch; (5LWES)
+5.2 Right Wrist Extensor Stretch; (5RWES)
+6.1 Left Cross Body Shoulder Stretch; (6LCBSS)
+6.2 Right Cross Body Shoulder Stretch; (6RCBSS)
+7.1 Left Side Stretch; (7LSS)
+7.2 Right Side Stretch; (7RSS)
+8.1 Left Elbow Extension; (8LEE)
+8.2 Right Elbow Extension; (8REE)
+9.1 Left High Crescent Lunge; (9LHCL)
+9.2 Right High Crescent Lunge; (9RHCL)
+10.1 Left Quadriceps Stretch; (10LQS)
+10.2 Right Quadriceps Stretch; (10RQS)
+11.1 Left Standing Hamstring Stretch; (11LSH)
+11.2 Right Standing Hamstring Stretch; (11LSH)
+12.1 Left Single Leg Balance (12LSLB)
+12.2 Right Single Leg Balance (12RSLB

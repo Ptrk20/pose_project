@@ -232,7 +232,7 @@ def start_timer():
 		
 		if remaining_time > 0 and timer_stopped == False:
 			remaining_time -= 1
-			if current_class_detected != "":
+			if current_class_detected != "" or current_class_detected == None:
 				tensions_by_second.append(current_class_detected)
 			main_window.after(1000, update_timer)
 			

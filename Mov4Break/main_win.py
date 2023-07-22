@@ -119,40 +119,31 @@ def update_camera():
 		min_score = min([keypoint.score for keypoint in person.keypoints])
 		detections = []
 		className = []
-		### You can remove this 'if' condition if you don't requires all keypoints are shown in camera 
-		if min_score < keypoint_detection_threshold_for_classifier:
-			error_text = 'Some keypoints are not detected.'
-			log.config(text=error_text)
-			text_location = (left_margin, 2 * row_size)
-			cv2.putText(frame, error_text, text_location, cv2.FONT_HERSHEY_PLAIN,font_size, text_color, font_thickness)
-			error_text = 'Make sure the person is fully visible in the camera.'
-			text_location = (left_margin, 3 * row_size)
-			cv2.putText(frame, error_text, text_location, cv2.FONT_HERSHEY_PLAIN,font_size, text_color, font_thickness)
-		else:
-			# Run pose classification
-			prob_list = classifier.classify_pose(person)
+		
+		# Run pose classification
+		prob_list = classifier.classify_pose(person)
 			
-			# Show classification results on the image
-			for i in range(classification_results_to_show):
-				class_name = prob_list[i].label
-				probability = round(prob_list[i].score, 2)
-				result_text = class_name + ' (' + str(probability) + ')'
-				text_location = (left_margin, (i + 2) * row_size)
+		# Show classification results on the image
+		for i in range(classification_results_to_show):
+			class_name = prob_list[i].label
+			probability = round(prob_list[i].score, 2)
+			result_text = class_name + ' (' + str(probability) + ')'
+			text_location = (left_margin, (i + 2) * row_size)
 				
-				### This will add detection in a list by frame
-				detections.append(result_text)
-				if class_name != '': 
-					className.append(class_name)
+			### This will add detection in a list by frame
+			detections.append(result_text)
+			if class_name != '': 
+				className.append(class_name)
 				
 				### Use this condition if you want to get only class with probabilty to 1.0 
 				# if probability == 1.0:
 				# 		detections.append(class_name)
 					
-				cv2.putText(frame, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,font_size, text_color, font_thickness)
+			cv2.putText(frame, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,font_size, text_color, font_thickness)
 			
 			### Display in logs the class detected by frame
-			log.config(text=detections)
-			current_class_detected = className[0]
+		log.config(text=detections)
+		current_class_detected = className[0]
 			
 					
 	# Calculate the FPS
@@ -307,36 +298,34 @@ def get_tensions_detected():
 	tensions_count = Counter(tensions_by_second)
 	sorted_tension_class = sorted(tensions_count.items())
 	
-	
+	t = []
 	for tension, count in sorted_tension_class:
 		### If improper sitting detected 5 times in 30 mins (means detected 5 seconds total time: 1count:1sec), add in tensions detected
 		if count > 5:
 			### get tension category
-			tension = classify_tension(tension)
+			# tension = classify_tension(tension)
 			
 			### add in tensions detected
-			tensions_detected.append(tension)
-
+			t.append(tension)
+	
+	classify_tension(t)
+   
 def classify_tension(imp_sitting):
 	### sample code to categorize tension based on improper sitting detected
 	tension = ""
 	
-	if imp_sitting == "hunched_forward" or imp_sitting == "leaning_backward":
-		tension = "Neck"
-	if imp_sitting == "hunched_forward" or imp_sitting == "leaning_backward":
-		tension = "Shoulder"
-	if imp_sitting == "hunched_forward" or imp_sitting == "leaning_backward":
-		tension = "Spine"
-	if imp_sitting == "hunched_forward" or imp_sitting == "leaning_backward":
-		tension = "Hip"
-	if imp_sitting == "feet_on_chair" or imp_sitting == "knee extension":
-		tension = "Knee"
-	if imp_sitting == "hunched_forward" or imp_sitting == "leaning_backward" or "feet_on_chair" or imp_sitting == "knee extension":
-		tension = "Wrist"
-	else:
-		tension = imp_sitting
+	if "hunched_forward" in imp_sitting and "leaning_backward" in imp_sitting:
+		tensions_detected.append("Neck")
+		tensions_detected.append("Shoulder")
+		tensions_detected.append("Spine")
+		tensions_detected.append("Hip")
+  		
+	if  "feet_on_chair" in imp_sitting and "knee extension" in imp_sitting:
+		tensions_detected.append("Knee")
+  
+	if "hunched_forward" in imp_sitting and "leaning_backward" in imp_sitting and "feet_on_chair" in imp_sitting and "knee extension" in imp_sitting:
+		tensions_detected.append("Wrist")
 	
-	return tension
 	
 ### camera view ###
 camera = tk.Label(main_window, border=2)

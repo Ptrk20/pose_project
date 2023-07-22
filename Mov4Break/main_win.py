@@ -292,6 +292,8 @@ def get_tensions_detected():
 	### Function for summarize improper sittins detected per second in 30 mins
 	global tensions_by_second
 	global tensions_detected
+ 
+	tensions_detected = []
 	
 	### ----------- Sample Code ---------- ###
 	### To be updated based on your conditions
@@ -312,7 +314,7 @@ def get_tensions_detected():
    
 def classify_tension(imp_sitting):
 	### sample code to categorize tension based on improper sitting detected
-	tension = ""
+	global tensions_detected
 	
 	if "hunched_forward" in imp_sitting and "leaning_backward" in imp_sitting:
 		tensions_detected.append("Neck")
